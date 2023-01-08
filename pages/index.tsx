@@ -3,6 +3,7 @@ import { listing } from './api/listing'
 import 'bulma/css/bulma.min.css';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 export async function getServerSideProps(ctx: { key: string | undefined }){
   const key = ctx.key ? ctx.key : 'Test';
@@ -15,6 +16,11 @@ export async function getServerSideProps(ctx: { key: string | undefined }){
 }
 
 export default function Home(props: { data: any[] }) {
+  const router = useRouter()
+  const refreshData = () => {
+    router.replace(router.asPath)
+  };
+
   async function addWishlist(id: any, e: { preventDefault: () => void; }) {
     e.preventDefault();
 
@@ -22,17 +28,17 @@ export default function Home(props: { data: any[] }) {
       id: id,
     }
 
-    const res = await fetch('api/wishlist/add', {
+    fetch('api/wishlist/add', {
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json'
       },
       method: 'POST'
+    }).then(() => {
+      refreshData()
     })
-    if (res.status === 200) {
-      alert("Wishlist created")
-      return 'Wishlist created';
-    }
+    
+    alert("Wishlist created");
   }
 
   return (

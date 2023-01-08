@@ -4,7 +4,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 type Data = {
-    message: string
+    message: any
 }
 
 export default async function handler(
@@ -12,12 +12,12 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   try {
-    console.log('req.body.id', req.body.id);
-        await prisma.wishlist.delete({
-            where: { id: req.body.id},
-        });
+    await prisma.wishlist.delete({
+        where: { id: req.body.id},
+    });
+    res.status(200).json({ message: 'done' });
     return 'Note created';
     } catch (e) {
-        throw e;
+        res.status(400).json({ message: e });
     }
 }

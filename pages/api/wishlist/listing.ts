@@ -8,7 +8,6 @@ export async function listing() {
     const resArr = [];
     let HttpClient = Axios.create();
     const wishlist = await prisma.wishlist.findMany();
-    console.log('wishlist', wishlist);
     if (wishlist.length > 0) {
         for (const wish of wishlist) {
           try {
@@ -31,10 +30,8 @@ export async function listing() {
           } catch (e) {}
         }
       }
-    console.log('result', resArr);
     return resArr;
   } catch (err) {
     console.log(err);
-    // res.status(403).json({ err: "Error occured." });
   }
 };

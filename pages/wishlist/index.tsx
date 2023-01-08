@@ -2,6 +2,7 @@ import 'bulma/css/bulma.min.css';
 import { listing } from '../api/wishlist/listing';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 export async function getServerSideProps(ctx: { key: string | undefined }){
     const books = await listing();
@@ -13,6 +14,11 @@ export async function getServerSideProps(ctx: { key: string | undefined }){
   }
   
 export default function Wishlist(props: { data: any[] }) {
+    const router = useRouter()
+    const refreshData = () => {
+      router.replace(router.asPath)
+    };
+
     async function removeWishlist(id: any, e: { preventDefault: () => void; }) {
         e.preventDefault();
     
@@ -20,18 +26,17 @@ export default function Wishlist(props: { data: any[] }) {
           id: id,
         }
     
-        console.log('data', data);
-        const res = await fetch('api/wishlist/remove', {
+        fetch('api/wishlist/remove', {
           body: JSON.stringify(data),
           headers: {
             'Content-Type': 'application/json'
           },
           method: 'POST'
+        }).then(() => {
+          refreshData()
         })
-        if (res.status === 200) {
-          alert("Wishlist removed")
-          return 'Wishlist created';
-        }
+
+        alert("Wishlist removed");
     }
 
     return (
