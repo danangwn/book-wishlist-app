@@ -1,6 +1,8 @@
 import '../styles/Home.module.css'
 import { listing } from './api/listing'
 import 'bulma/css/bulma.min.css';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export async function getServerSideProps(ctx: { key: string | undefined }){
   const key = ctx.key ? ctx.key : 'Test';
@@ -38,10 +40,10 @@ export default function Home(props: { data: any[] }) {
     <div style={{paddingBottom: 50}}>
     <nav className="navbar is-fixed-top is-spaced" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <Link className="navbar-item" href="/">
-          <img src="https://www.pngfind.com/pngs/m/202-2029636_reading-books-logo-png-transparent-png.png"></img>
-        </Link>
-        <Link className="navbar-item">
+        {/* <Link className="navbar-item" href="/">
+          <Image src="https://www.pngfind.com/pngs/m/202-2029636_reading-books-logo-png-transparent-png.png" width={100} height={100}></Image>
+        </Link> */}
+        <Link className="navbar-item" href='/'>
             Home
           </Link>
 
@@ -62,7 +64,7 @@ export default function Home(props: { data: any[] }) {
               <article className="media">
                 <div className="media-left">
                   <figure className="image">
-                    <img src={data.photo} alt="Image"></img>
+                    <Image src={data.photo} alt="Image" width={100} height={100}></Image>
                   </figure>
                 </div>
                 <div className="media-content">
