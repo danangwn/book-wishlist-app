@@ -13,7 +13,7 @@ export async function getServerSideProps(ctx: { key: string | undefined }){
   }
   
 export default function Wishlist(props: { data: any[] }) {
-    async function removeWishlist(id, e) {
+    async function removeWishlist(id: any, e: { preventDefault: () => void; }) {
         e.preventDefault();
     
         const data = {

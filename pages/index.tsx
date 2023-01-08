@@ -15,7 +15,7 @@ export async function getServerSideProps(ctx: { key: string | undefined }){
 }
 
 export default function Home(props: { data: any[] }) {
-  async function addWishlist(id, e) {
+  async function addWishlist(id: any, e: { preventDefault: () => void; }) {
     e.preventDefault();
 
     const data = {
