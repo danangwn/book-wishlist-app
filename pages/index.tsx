@@ -46,9 +46,6 @@ export default function Home(props: { data: any[] }) {
     <div style={{paddingBottom: 50}}>
     <nav className="navbar is-fixed-top is-spaced" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        {/* <Link className="navbar-item" href="/">
-          <Image src="https://www.pngfind.com/pngs/m/202-2029636_reading-books-logo-png-transparent-png.png" width={50} height={50} alt={''}></Image>
-        </Link> */}
         <Link className="navbar-item" href='/'>
             Home
           </Link>

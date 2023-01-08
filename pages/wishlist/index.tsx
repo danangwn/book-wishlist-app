@@ -44,9 +44,6 @@ export default function Wishlist(props: { data: any[] }) {
         <div style={{paddingBottom: 50}}>
         <nav className="navbar is-fixed-top is-spaced" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-            {/* <Link className="navbar-item" href="/">
-              <Image src="https://www.pngfind.com/pngs/m/202-2029636_reading-books-logo-png-transparent-png.png" width={100} height={100} alt={''}></Image>
-            </Link> */}
             <Link className="navbar-item" href="/">
                 Home
               </Link>
