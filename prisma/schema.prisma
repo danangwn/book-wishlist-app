@@ -6,12 +6,12 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url = env("DATABASE_URL")
 }
 
 model wishlist {
-  id Int @id @unique @default(autoincrement())
+  id Int @id @default(autoincrement())
   book_id String
-  added_date String
+  added_date String?
 }
