@@ -55,7 +55,7 @@ export default function Wishlist(props: { data: any[] }) {
 
         <div>
             {props.data.map(data => (
-                <div className='my-0'>
+                <div key={data.id}>
                 <div className="section has-background-light section-padding: 0">
                 <div className="columns is-centered">
                 <div className="column is-one-third">
