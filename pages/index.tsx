@@ -38,16 +38,16 @@ export default function Home(props: { data: any[] }) {
     <div style={{paddingBottom: 50}}>
     <nav className="navbar is-fixed-top is-spaced" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item" href="/">
+        <Link className="navbar-item" href="/">
           <img src="https://www.pngfind.com/pngs/m/202-2029636_reading-books-logo-png-transparent-png.png"></img>
-        </a>
-        <a className="navbar-item">
+        </Link>
+        <Link className="navbar-item">
             Home
-          </a>
+          </Link>
 
-          <a className="navbar-item" href="/wishlist">
+          <Link className="navbar-item" href="/wishlist">
             Wishlist
-          </a>
+          </Link>
       </div>
     </nav>
     </div>
